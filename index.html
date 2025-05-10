@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="/epoprg/style.css">
+  <script src="/epoprg/sw.js"></script>
+  <link rel="manifest" href="/epoprg/manifest.json">
+  <link rel="icon" href="/epoprg/favicon.png" sizes="626x626">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+  </script>
+  <title>Maturita EPO + PRG</title>
+</head>
+<body>
+  <div id="time-display-container">
+    <img src="/epoprg/logo.png" alt="Image" id="time-image">
+    <div id="time-display" class="time-display"></div>
+  </div>
+  <div id="gradient-container">
+    <div class="gradient"></div>
+  </div>
+  <div class="container">
+    <div id="content" class="hidden">
+      <div class="buttons-container">
+        <button><span class="button-number">1</span>OS stanic, zabezpečení OS stanic</button>
+        <button><span class="button-number">2</span>Cloudové síťové aplikace</button>
+        <button><span class="button-number">3</span>Počítačové sítě, model TCP/IP</button>
+        <button><span class="button-number">4</span>Počítačové sítě, referenční model OSI</button>
+        <button><span class="button-number">5</span>Počítače typu PC, architektura počítačů, jednotlivé typy</button>
+        <button><span class="button-number">6</span>Servery, zálohování serverových dat</button>
+        <button><span class="button-number">7</span>Aktivní a pasivní síťové prvky</button>
+        <button><span class="button-number">8</span>Správa sítě</button>
+        <button><span class="button-number">9</span>Paměti PC</button>
+        <button><span class="button-number">10</span>Antivirové servery, malware</button>
+        <button><span class="button-number">11</span>Virtuální server, DNS, Active Directory</button>
+        <button><span class="button-number">12</span>Databázové servery</button>
+        
+        <button><span class="button-number">13</span>Jednočipové procesory, Procesory</button>
+        <button><span class="button-number">14</span>Algoritmy a vývojové diagramy</button>
+        <button><span class="button-number">15</span>Algoritmy a vývojové diagramy, program v C</button>
+        <button><span class="button-number">16</span>Algoritmy a vývojové diagramy, program v JS</button>
+        <button><span class="button-number">17</span>Jazyk C</button>
+        <button><span class="button-number">18</span>Jazyk C, podprogramy</button>
+        <button><span class="button-number">19</span>Jazyk C, podmínky a větvení</button>
+        <button><span class="button-number">20</span>Jazyk C, datové typy, výrazy</button>
+        <button><span class="button-number">21</span>Značkovací jazyk HTML</button>
+        <button><span class="button-number">22</span>Webová stránka, HTML</button>
+        <button><span class="button-number">23</span>Webová stránka, HTML+CSS+JS</button>
+        <button><span class="button-number">24</span>JavaScript, vlastnosti</button>
+        <button><span class="button-number">25</span>Databáze, základní pojmy</button>
+      </div>
+    </div>
+    <!-- Obsahové divy pro každý obsah -->
+    <div id="content-1" class="content hidden"></div>
+    <div id="content-2" class="content hidden"></div>
+    <div id="content-3" class="content hidden"></div>
+    <div id="content-4" class="content hidden"></div>
+    <div id="content-5" class="content hidden"></div>
+    <div id="content-6" class="content hidden"></div>
+    <div id="content-7" class="content hidden"></div>
+    <div id="content-8" class="content hidden"></div>
+    <div id="content-9" class="content hidden"></div>
+    <div id="content-10" class="content hidden"></div>
+    <div id="content-11" class="content hidden"></div>
+    <div id="content-12" class="content hidden"></div>
+    <div id="content-13" class="content hidden"></div>
+    <div id="content-14" class="content hidden"></div>
+    <div id="content-15" class="content hidden"></div>
+    <div id="content-16" class="content hidden"></div>
+    <div id="content-17" class="content hidden"></div>
+    <div id="content-18" class="content hidden"></div>
+    <div id="content-19" class="content hidden"></div>
+    <div id="content-20" class="content hidden"></div>
+    <div id="content-21" class="content hidden"></div>
+    <div id="content-22" class="content hidden"></div>
+    <div id="content-23" class="content hidden"></div>
+    <div id="content-24" class="content hidden"></div>
+    <div id="content-25" class="content hidden"></div>
+    <div id="script-form" class="script-form">
+      <h2>ZADEJ HESLO:</h2>
+      <input type="password" id="script" required>
+      <button id="unlock-button" onclick="checkScript()">Odemknout</button>
+      <strong><p id="incorrect-script" class="hidden">Zadané heslo není správné.</p></strong>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Detekce mobilního zařízení
+      var isMobile = window.innerWidth <= 600;
+
+      if (isMobile) {
+        // Přizpůsobení pro mobilní zobrazení
+        document.documentElement.style.overflowX = 'hidden';
+        document.body.style.overflowX = 'hidden';
+
+        // Kontrola správného nastavení pro PDF
+        document.addEventListener('click', function(e) {
+          if (e.target && e.target.matches('button')) {
+            setTimeout(function() {
+              var pdfObjects = document.querySelectorAll('object[type="application/pdf"]');
+              pdfObjects.forEach(function(obj) {
+                obj.style.width = '100%';
+                obj.style.height = '100%';
+              });
+            }, 500);
+          }
+        });
+      }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

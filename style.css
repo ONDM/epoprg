@@ -1,0 +1,413 @@
+/* STYLY PRO PC A MOBIL */
+body
+{
+  font-family: 'font1', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background: #141414;
+  overflow: hidden;
+}
+
+.gradient
+{
+  --size: 300px;
+  --speed: 40s;
+  --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  width: var(--size);
+  height: var(--size);
+  filter: blur(calc(var(--size) / 5));
+  background-image: linear-gradient(hsl(180, 32%, 35%), hsl(51, 62%, 45%));
+  animation: rotate var(--speed) var(--easing) alternate infinite;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  z-index: -1;
+}
+
+.container
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+#gradient-container
+{
+  position: absolute;
+  transform: translate(0px, 0px);
+}
+
+@keyframes rotate
+{
+  0%
+  {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
+}
+
+#time-display
+{
+  font-family: 'font1', Arial, sans-serif;
+  position: fixed;
+  top: 50px;
+  left: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 5px 5px;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#time-image
+{
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  width: 80px;
+  height: 80px;
+  opacity: 0.1;
+}
+
+@font-face
+{
+  font-family: 'font1';
+  src: url('/cetba/font.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Styly pro PDF wrapper */
+.pdf-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Styly pro PDF iframe */
+.pdf-iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.content button#back-button {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 50px;
+  height: 40px;
+  background-color: rgba(51, 219, 102, 0.7);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10; /* Tlačítko nad PDF */
+}
+
+.content button#back-button:hover {
+  background-color: rgba(51, 219, 102, 1);
+}
+
+.buttons-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.buttons-back
+{
+  font-family: 'font1', Arial, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, auto);
+  gap: 10px;
+  justify-content: center;
+}
+
+.script-form label,
+.script-form input,
+.script-form button
+{
+  margin-top: 10px;
+}
+
+img
+{
+  max-width: 110vh;
+  max-height: 98vh;
+  transition: transform 0.3s ease;
+}
+
+button#unlock-button
+{
+  font-family: 'font1', Arial, sans-serif;
+  width: 120px;
+  height: 43px;
+  font-size: 18px;
+  border-radius: 15px;
+  background-color: #33db66;
+}
+
+#script:disabled
+{
+  width: 250px;
+  height: 25px; 
+  border-radius: 8px;    /* Zaoblení rohů */
+  background-color: #fb7979;  
+}
+
+button#unlock-button:hover
+{
+  background-color: #0a852f;
+}
+
+#script-form input
+{
+  width: 320px;
+  height: 32px;
+  font-size: 19px;
+  border-radius: 8px;    /* Zaoblení rohů */
+  padding: 8px;    /* Vnější okraj textového pole */
+  border: 1px solid #ffffff;
+  background-color: #212121;
+  box-sizing: border-box;    /* Zahrnuje ohraničení do celkové šířky a výšky */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;    /* Plynulý přechod pro hranice a stín */
+}
+
+#script-form input:focus
+{
+  color: rgb(230, 230, 230);
+  background-color: #212121;
+  outline-color: rgb(77, 85, 52);
+  box-shadow: 0px 0px 15px rgb(68, 79, 48);
+  transition: .1s;
+  transition-property: box-shadow;
+}
+
+button
+{
+  font-family: 'font1', Arial, sans-serif;
+  position: relative;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #2f4f4f;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 100%;    /* Tlačítka na plnou šířku */
+  margin-bottom: 10px;    /* Přidáno pro mezeru mezi tlačítky na mobilu */
+  height: 80px;    /* Pevná výška tlačítek pro všechna zařízení */
+}
+
+.buttons-container button:nth-child(n+13) {
+  background-color: #a28149
+}
+
+button:hover {
+  background-color: #3b6868;
+}
+.buttons-container button:nth-child(n+13):hover {
+  background-color: #a87d34
+}
+
+#pdf-viewer-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #333; /* Tmavé pozadí kolem PDF stránek */
+  padding: 0;
+  margin: 0;
+}
+
+/* Styly pro jednotlivé canvas stránek PDF */
+#pdf-viewer-container canvas {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (min-width: 601px)
+{
+  button
+  {
+    width: auto;    /* Automatická šířka pro větší obrazovky */
+    margin-bottom: 0;    /* Odstraněno pro větší obrazovky */
+  }
+  .buttons-back
+  {
+    width: auto;
+    margin-bottom: 0;
+  }
+}
+
+.button-number
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.hidden
+{
+  display: none !important;
+}
+
+.buttons-container
+{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  width: 1000px;
+}
+
+.script-form
+{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#script-form h1, h2
+{
+  color: white;
+}
+
+.script-form #incorrect-script
+{
+  color: red;
+}
+
+.content-header
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  flex-direction: column;
+}
+
+.content-title
+{
+  color: white;
+  margin: 20px;    /* Přidáno pro větší mezeru nahoru a dole */
+}
+
+/* STYLY JEN PRO MOBILY */
+@media only screen and (max-width: 1000px)
+{
+  body
+  {
+    overflow-x: hidden;
+    overflow-y: auto; /* umožní svislý scroll */
+    height: auto;     /* nutné pro scroll */
+  }
+
+  button
+  {
+    width: 90%;           /* Menší šířka */
+    margin: 0 auto 10px;  /* Vlevo a vpravo auto = vystředění, dole mezera */
+    height: 55px;
+  }
+
+  .buttons-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Sloupce pro mobilní zařízení */
+    gap: 5px;
+    height: 720px; /* Maximální výška pro scrollování */
+    overflow-y: auto; /* Povolení vertikálního scrollování */
+    padding: 10px;
+    scroll-behavior: smooth; /* Plynulé scrollování */
+    margin: 0;
+    align-items: flex-start; /* Začátek kontejneru od vrchu */
+  }
+
+  .buttons-back
+  {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content-title
+  {
+    margin: 20px;
+  }
+
+    .content {
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .content iframe {
+      width: 100%;
+      height: 100%;
+      transform: scale(1);
+      transform-origin: top left;
+    }
+    
+    .content button#back-button {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      width: 50px;
+      height: 40px;
+      opacity: 0.9;
+      background-color: rgba(51, 219, 102, 0.9);
+    }
+
+    #pdf-viewer-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; /* Pro plynulý scroll na iOS */
+    }
+
+    #pdf-viewer-container canvas {
+      margin: 0 auto; /* Canvas vycentrován */
+      padding: 0;
+      display: block;
+      width: 110%; /* Využití celé šířky */
+      height: auto;
+      box-shadow: none;
+    }
+
+    .buttons-container
+    {
+      width: 420px;
+    }
+}

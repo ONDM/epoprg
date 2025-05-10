@@ -1,0 +1,17 @@
+{
+  "name": "EPO + PRG",
+  "short_name": "EPO+PRG",
+  "description": "Offline zápisy EPO + PRG",
+  "start_url": "/epoprg/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons":
+  [
+    {
+      "src": "/epoprg/favicon.png",
+      "sizes": "626x626",
+      "type": "image/png"
+    }
+  ]
+}
